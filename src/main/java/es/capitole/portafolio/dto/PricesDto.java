@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Positive;
 
@@ -26,6 +27,7 @@ import lombok.Setter;
 @Builder
 public class PricesDto {
 
+	@Id
 	@ApiModelProperty("ID producto")
 	@Column(name = "PRODUCT_ID")
 	@Positive
@@ -44,8 +46,8 @@ public class PricesDto {
 	@Column(name = "END_DATE")
 	private LocalDate endDate;
 	
-//	@ApiModelProperty("PRECIO ")
-	@Column(name = "price_list")
+	@ApiModelProperty("Precio de lista")
+	@Column(name = "PRICE_LIST")
 	private int priceList;
 	
 	@ApiModelProperty("Prioridad")

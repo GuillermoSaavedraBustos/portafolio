@@ -1,19 +1,23 @@
 package es.capitole.portafolio.repository;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import es.capitole.portafolio.dto.PricesDto;
 
-public interface BusquedaRegistrosRepository {
+public interface BusquedaRegistrosRepository extends JpaRepository<PricesDto, Long> {
 	
-    @Query("select p from PersonModel p left join fetch p.telephones"
-        	+ " left join fetch p.group left join fetch p.personExtra"
-        	+ " where p.personId = :personId")
-    PricesDto buscaRegistros(@Param("personId") LocalDate fechaAplicacion,
-    		@Param("personId") String identificacionProducto,
-    		@Param("personId") int identificacionCadena);
+    @Query("select p.productId, p.brandId, p.priceList, p.startDate, p.endDate, p.price"
+    		+ " from PricesDto p "
+    		+ " where :fechaAplicacion between p.startDate and p.endDate"
+    		+ " and p.brandId = :identificacionCadena"
+    		+ " and p.productId = :identificacionProducto")
+    PricesDto buscaRegistros(@Param("fechaAplicacion") LocalDate fechaAplicacion,
+    		@Param("identificacionProducto") int identificacionProducto,
+    		@Param("identificacionCadena") int identificacionCadena);
 
 }

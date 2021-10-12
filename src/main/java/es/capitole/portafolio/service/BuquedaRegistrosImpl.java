@@ -24,9 +24,10 @@ public class BuquedaRegistrosImpl implements BuquedaRegistros {
 
 	
 	@Override
-	public Optional<PricesDto> buscaRegistros(LocalDate fechaAplicacion,
-			String identificacionProducto,
+	public PricesDto buscaRegistros(LocalDate fechaAplicacion,
+			int identificacionProducto,
 			int identificacionCadena){	
-		return null;
+		
+		return busquedaRepository.buscaRegistros(fechaAplicacion, identificacionProducto, identificacionCadena);
 	}
 }
