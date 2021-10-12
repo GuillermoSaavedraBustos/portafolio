@@ -1,6 +1,13 @@
 package es.capitole.portafolio.service;
 
+import java.time.LocalDate;
+import java.util.Optional;
+
+import es.capitole.portafolio.dto.PricesDto;
+
 public interface BuquedaRegistros {
 	
-	String obtenerReristros();
+	Optional<PricesDto> buscaRegistros(LocalDate fechaAplicacion,
+			String identificacionProducto,
+			int identificacionCadena);
 }

@@ -1,43 +1,65 @@
 package es.capitole.portafolio.dto;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.validation.constraints.Positive;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
+
+@ApiModel ("Clase de los precios")
 @Table(name="PRICES")
+@Entity
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class PricesDto {
 
-	@Column(name = "product_id") 
+	@ApiModelProperty("ID producto")
+	@Column(name = "PRODUCT_ID")
+	@Positive
 	private int productId;
 	
-	@Column(name = "brand_id")
+	@ApiModelProperty("ID Brnad")
+	@Column(name = "BRAND_ID")
+	@Positive
 	private int brandId;
 	
-	@Column(name = "start_date")
-	private Date startDate;
+	@ApiModelProperty("Fecha inicio")
+	@Column(name = "START_DATE")
+	private LocalDate startDate;
 	
-	@Column(name = "end_date")
-	private Date endDate;
+	@ApiModelProperty("Fecha fin")
+	@Column(name = "END_DATE")
+	private LocalDate endDate;
 	
+//	@ApiModelProperty("PRECIO ")
 	@Column(name = "price_list")
 	private int priceList;
 	
-	@Column(name = "priority")
+	@ApiModelProperty("Prioridad")
+	@Column(name = "PRIORITY")
+	@Positive
 	private int priority;
 	
-	@Column(name = "price")
-	private int  price;
+	@ApiModelProperty("Precio")
+	@Column(name = "PRICE")
+	@Positive
+	private double price;
 	
-	@Column(name = "curr")
+	@ApiModelProperty("Ocurrencia")
+	@Column(name = "CURR")
+	@Positive
 	private String curr;
 }
