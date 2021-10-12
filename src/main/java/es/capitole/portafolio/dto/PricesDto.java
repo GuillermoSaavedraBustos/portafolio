@@ -38,6 +38,10 @@ public class PricesDto {
 	@Positive
 	private int brandId;
 	
+	@ApiModelProperty("Precio de lista")
+	@Column(name = "PRICE_LIST")
+	private int priceList;
+	
 	@ApiModelProperty("Fecha inicio")
 	@Column(name = "START_DATE")
 	private LocalDate startDate;
@@ -45,15 +49,13 @@ public class PricesDto {
 	@ApiModelProperty("Fecha fin")
 	@Column(name = "END_DATE")
 	private LocalDate endDate;
-	
-	@ApiModelProperty("Precio de lista")
-	@Column(name = "PRICE_LIST")
-	private int priceList;
-	
+
+	/*
 	@ApiModelProperty("Prioridad")
 	@Column(name = "PRIORITY")
 	@Positive
 	private int priority;
+	*/
 	
 	@ApiModelProperty("Precio")
 	@Column(name = "PRICE")

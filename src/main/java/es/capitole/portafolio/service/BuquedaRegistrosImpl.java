@@ -24,7 +24,7 @@ public class BuquedaRegistrosImpl implements BuquedaRegistros {
 
 	
 	@Override
-	public PricesDto buscaRegistros(LocalDate fechaAplicacion,
+	public Optional<PricesDto> buscaRegistros(LocalDate fechaAplicacion,
 			int identificacionProducto,
 			int identificacionCadena){	
 		

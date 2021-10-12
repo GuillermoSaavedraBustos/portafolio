@@ -9,14 +9,14 @@ import org.springframework.data.repository.query.Param;
 
 import es.capitole.portafolio.dto.PricesDto;
 
-public interface BusquedaRegistrosRepository extends JpaRepository<PricesDto, Long> {
+public interface BusquedaRegistrosRepository extends JpaRepository<PricesDto, Integer> {
 	
-    @Query("select p.productId, p.brandId, p.priceList, p.startDate, p.endDate, p.price"
+    @Query(value = "select p"//p.productId, p.brandId, p.priceList, p.startDate, p.endDate, p.price"
     		+ " from PricesDto p "
     		+ " where :fechaAplicacion between p.startDate and p.endDate"
     		+ " and p.brandId = :identificacionCadena"
-    		+ " and p.productId = :identificacionProducto")
-    PricesDto buscaRegistros(@Param("fechaAplicacion") LocalDate fechaAplicacion,
+    		+ " and p.productId = :identificacionProducto", countName = "cantidad")
+    Optional<PricesDto> buscaRegistros(@Param("fechaAplicacion") LocalDate fechaAplicacion,
     		@Param("identificacionProducto") int identificacionProducto,
     		@Param("identificacionCadena") int identificacionCadena);
 
