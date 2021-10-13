@@ -13,7 +13,7 @@ import es.capitole.portafolio.dto.PricesDto;
 @Repository
 public interface BusquedaRegistrosRepository extends JpaRepository<PricesDto, Integer> {
 	
-    @Query(value = "select p"
+    @Query(value = "select DISTINCT p"
     		+ " from PricesDto p "
     		+ " where :fechaAplicacion between p.startDate and p.endDate"
     		+ " and p.productId = :identificacionProducto"

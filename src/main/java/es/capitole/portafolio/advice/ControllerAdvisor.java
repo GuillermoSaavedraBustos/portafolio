@@ -40,10 +40,6 @@ public class ControllerAdvisor extends ResponseEntityExceptionHandler {
 	@Override
 	public ResponseEntity<Object> handleExceptionInternal(
 			Exception ex, @Nullable Object body, HttpHeaders headers, HttpStatus status, WebRequest request) {
-
-		if (HttpStatus.INTERNAL_SERVER_ERROR.equals(status)) {
-			request.setAttribute(WebUtils.ERROR_EXCEPTION_ATTRIBUTE, ex, WebRequest.SCOPE_REQUEST);
-		}
 		
 		if (HttpStatus.BAD_REQUEST.equals(status)) {
 			Map<String, Object> newBody = new LinkedHashMap<>();

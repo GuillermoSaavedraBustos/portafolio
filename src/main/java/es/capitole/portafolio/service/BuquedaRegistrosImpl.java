@@ -2,9 +2,6 @@ package es.capitole.portafolio.service;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
-
-import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,21 +9,12 @@ import org.springframework.stereotype.Service;
 import es.capitole.portafolio.dto.PricesDto;
 import es.capitole.portafolio.exception.NotDataFoundException;
 import es.capitole.portafolio.repository.BusquedaRegistrosRepository;
-import lombok.extern.slf4j.Slf4j;
-
 
 @Service
-@Slf4j
 public class BuquedaRegistrosImpl implements BuquedaRegistros {	
 	
 	@Autowired
 	private BusquedaRegistrosRepository busquedaRepository;
-	
-    @PostConstruct
-    public void init() {
-       //initialization of clientAccountsData
-    }
-
 	
 	@Override
 	public List<PricesDto> buscaRegistros(LocalDate fechaAplicacion,

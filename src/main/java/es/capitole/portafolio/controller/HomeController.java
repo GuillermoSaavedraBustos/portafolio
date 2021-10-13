@@ -20,11 +20,9 @@ import es.capitole.portafolio.service.BuquedaRegistros;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("/busqueda")
-@Slf4j
 public class HomeController {
 
 	@Autowired
