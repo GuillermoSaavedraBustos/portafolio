@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Positive;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -62,8 +64,8 @@ public class PricesDto {
 	@Positive
 	private double price;
 	
-	@ApiModelProperty("Ocurrencia")
-	@Column(name = "CURR")
-	@Positive
-	private String curr;
+//	@ApiModelProperty("Ocurrencia")
+//	@Column(name = "CURR")
+//	@Positive
+//	private String curr;
 }

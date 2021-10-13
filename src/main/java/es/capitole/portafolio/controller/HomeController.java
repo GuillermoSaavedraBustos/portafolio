@@ -1,11 +1,15 @@
 package es.capitole.portafolio.controller;
 
 import java.time.LocalDate;
-import java.util.Optional;
+import java.util.List;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,9 +20,11 @@ import es.capitole.portafolio.service.BuquedaRegistros;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("/busqueda")
+@Slf4j
 public class HomeController {
 
 	@Autowired
@@ -26,14 +32,16 @@ public class HomeController {
 
 	@GetMapping(path = "/productos/{fechaAplicacion}/{identificacionProducto}/{identificacionCadena}", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiOperation("Operacion que se encarga de buscar en la tabla PRICES")
-	@ApiResponses({ @ApiResponse(code = 500, message = "Internal server error") })
-	public Optional<PricesDto> obtenerProducto(@PathVariable("fechaAplicacion") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDate fechaAplicacion,
+	@ApiResponses({ @ApiResponse(code = 500, message = "Internal server error"),
+					@ApiResponse(code= 400, message = "Data Not Found"),
+					@ApiResponse(code = 200, message = "Datos OK")})
+	public ResponseEntity<List<PricesDto>> obtenerProducto(
+			@Valid @PathVariable("fechaAplicacion") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)  LocalDate fechaAplicacion,
 			@PathVariable("identificacionProducto") int identificacionProducto,
 			@PathVariable("identificacionCadena") int identificacionCadena) {
 
-
-		Optional<PricesDto> response = busqueda.buscaRegistros(fechaAplicacion, identificacionProducto, identificacionCadena);
-
-		return response;
+		List<PricesDto> response = busqueda.buscaRegistros(fechaAplicacion, identificacionProducto, identificacionCadena);
+		
+		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 }
