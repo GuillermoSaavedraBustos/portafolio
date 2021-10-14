@@ -1,6 +1,6 @@
 package es.capitole.portafolio.controller;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -30,11 +30,11 @@ public class HomeController {
 
 	@GetMapping(path = "/productos/{fechaAplicacion}/{identificacionProducto}/{identificacionCadena}", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiOperation("Operacion que se encarga de buscar en la tabla PRICES")
-	@ApiResponses({ @ApiResponse(code = 500, message = "Internal server error"),
-					@ApiResponse(code= 400, message = "Data Not Found"),
-					@ApiResponse(code = 200, message = "Datos OK")})
+	@ApiResponses({ @ApiResponse(code = 400, message = "Bad Request"),
+		@ApiResponse(code= 404, message = "Data Not Found"),
+		@ApiResponse(code = 200, message = "Datos OK")})
 	public ResponseEntity<List<PricesDto>> obtenerProducto(
-			@Valid @PathVariable("fechaAplicacion") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)  LocalDate fechaAplicacion,
+			@PathVariable("fechaAplicacion") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)  LocalDateTime fechaAplicacion,
 			@PathVariable("identificacionProducto") int identificacionProducto,
 			@PathVariable("identificacionCadena") int identificacionCadena) {
 

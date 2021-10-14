@@ -1,14 +1,12 @@
 package es.capitole.portafolio.dto;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Positive;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -46,11 +44,11 @@ public class PricesDto {
 	
 	@ApiModelProperty("Fecha inicio")
 	@Column(name = "START_DATE")
-	private LocalDate startDate;
+	private LocalDateTime startDate;
 	
 	@ApiModelProperty("Fecha fin")
 	@Column(name = "END_DATE")
-	private LocalDate endDate;
+	private LocalDateTime endDate;
 
 	/*
 	@ApiModelProperty("Prioridad")

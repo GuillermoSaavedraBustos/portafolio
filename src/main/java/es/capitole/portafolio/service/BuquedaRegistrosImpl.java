@@ -1,6 +1,6 @@
 package es.capitole.portafolio.service;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ public class BuquedaRegistrosImpl implements BuquedaRegistros {
 	private BusquedaRegistrosRepository busquedaRepository;
 	
 	@Override
-	public List<PricesDto> buscaRegistros(LocalDate fechaAplicacion,
+	public List<PricesDto> buscaRegistros(LocalDateTime fechaAplicacion,
 			int identificacionProducto,
 			int identificacionCadena){	
 		
