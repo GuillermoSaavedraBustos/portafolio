@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.time.Month;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ import es.capitole.portafolio.service.BusquedaRegistrosServiceImpl;
 @SpringBootTest(classes = InditexApplication.class)
 @Transactional
 @Commit
+@Disabled
 public class PortafolioTest {	
 
 	@Autowired
