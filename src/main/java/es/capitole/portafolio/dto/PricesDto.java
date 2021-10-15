@@ -50,12 +50,10 @@ public class PricesDto {
 	@Column(name = "END_DATE")
 	private LocalDateTime endDate;
 
-	/*
 	@ApiModelProperty("Prioridad")
 	@Column(name = "PRIORITY")
 	@Positive
 	private int priority;
-	*/
 	
 	@ApiModelProperty("Precio")
 	@Column(name = "PRICE")
